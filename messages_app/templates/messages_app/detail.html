@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ m.subject }}</h2>
+<p>De: {{ m.sender.username }} | {{ m.sent_at }}</p>
+<p>{{ m.body }}</p>
+{% endblock %}

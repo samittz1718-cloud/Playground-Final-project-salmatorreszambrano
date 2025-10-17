@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Borrar{% endblock %}
+{% block content %}
+<h1>¿Borrar "{{ recipe.title }}"?</h1>
+<form method="post">{% csrf_token %}<button>Confirmar</button></form>
+{% endblock %}

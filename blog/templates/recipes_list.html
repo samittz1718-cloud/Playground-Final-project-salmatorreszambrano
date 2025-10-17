@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Recetas{% endblock %}
+{% block content %}
+<h1>Recetas</h1>
+{% if recipes %}
+  <ul>
+  {% for r in recipes %}
+    <li>
+      <h3>{{ r.title }}</h3>
+      <p>{{ r.subtitle }}</p>
+      <a href="{% url 'pages:page_detail' r.pk %}">Leer más</a>
+      {% if user.is_authenticated and user == r.author %}
+        | <a href="{% url 'pages:update_page' r.pk %}">Editar</a>
+        | <a href="{% url 'pages:delete_page' r.pk %}">Borrar</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay páginas aún.</p>
+{% endif %}
+{% endblock %}

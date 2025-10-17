@@ -5,12 +5,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("blog.urls")),                 # Home/About/Pages
-    path("accounts/", include("accounts.urls")),    # Auth y perfiles
-    path("messages/", include("messages_app.urls")),# Mensajería
+    path("", include("blog.urls")),  # Conecta con las rutas de la app "blog"
+    path("accounts/", include("accounts.urls")),  # Enlace para el login y registro
 ]
 
+# Configuración para archivos multimedia e imágenes
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 

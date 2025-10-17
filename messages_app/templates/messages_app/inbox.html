@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Mensajes</h1>
+<p><a href="{% url 'messages_app:new' %}">Nuevo</a></p>
+<ul>
+  {% for m in msgs %}
+    <li><a href="{% url 'messages_app:detail' m.pk %}">{{ m.subject }}</a> - de {{ m.sender.username }}</li>
+  {% empty %}
+    <li>No tienes mensajes</li>
+  {% endfor %}
+</ul>
+{% endblock %}

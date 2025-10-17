@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Mi Blog{% endblock %}</title>
-</head>
-<body>
-    <h1>Mi Blog</h1>
-    <nav>
-        <a href="/">Inicio</a> |
-        <a href="/autor/">Nuevo Autor</a> |
-        <a href="/categoria/">Nueva Categoria</a> |
-        <a href="/post/">Nuevo Post</a> |
-        <a href="/buscar/">Buscar Post</a>
-    </nav>
-    <hr>
-    {% block content %}{% endblock %}
-</body>
-</html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><title>Sabor & Receta - {% block title %}{% endblock %}</title>
+</head><body>
+<nav>
+  <a href="{% url 'pages:home' %}">Home</a>
+  <a href="{% url 'pages:about' %}">About</a>
+  <a href="{% url 'pages:pages_list' %}">Recetas</a>
+  {% if user.is_authenticated %}
+    <a href="{% url 'accounts:profile' %}">Perfil</a>
+    <a href="{% url 'accounts:logout' %}">Logout</a>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url 'accounts:signup' %}">Signup</a>
+  {% endif %}
+</nav>
+{% if messages %}<ul>{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
+{% block content %}{% endblock %}
+</body></html>
+
