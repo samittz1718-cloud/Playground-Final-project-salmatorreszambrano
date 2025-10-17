@@ -1,8 +1,35 @@
-{% extends "base.html" %}{% block title %}Acerca de mí{% endblock %}
+{% extends "base.html" %}
 {% block content %}
-<h1>Acerca de mí</h1>
-<p><b>Nombre:</b> Salma Torres Zambrano</p>
-<p><b>Correo:</b> recetariodelicioso@gmail.com</p>
-<p><b>Teléfono:</b> +593 99 456 7890</p>
-<p>Apasionada de la cocina casera. Comparto recetas y tips.</p>
+<style>
+  body {
+    background-color: #fff8f0;
+    font-family: 'Poppins', sans-serif;
+  }
+  .about-container {
+    text-align: center;
+    margin: 80px auto;
+    width: 70%;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #e85d75;
+  }
+  p {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.8;
+  }
+</style>
+
+<div class="about-container">
+  <h1>Sobre mí</h1>
+  <p>¡Hola! Soy <strong>Salma Torres Zambrano</strong>, creadora de <em>Sabor y Recetas</em>. 
+  Este blog nació por mi amor a la cocina y mi deseo de compartir recetas fáciles y deliciosas con el mundo. 
+  Aquí podrás encontrar ideas para desayunos, almuerzos y postres caseros.</p>
+
+  <p>📩 Contáctame: sabor.recetas@email.com</p>
+</div>
 {% endblock %}

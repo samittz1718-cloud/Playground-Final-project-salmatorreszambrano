@@ -1,21 +1,66 @@
-{% extends "base.html" %}{% block title %}Recetas{% endblock %}
+{% extends "base.html" %}
 {% block content %}
-<h1>Recetas</h1>
-{% if recipes %}
-  <ul>
-  {% for r in recipes %}
-    <li>
-      <h3>{{ r.title }}</h3>
-      <p>{{ r.subtitle }}</p>
-      <a href="{% url 'pages:page_detail' r.pk %}">Leer más</a>
-      {% if user.is_authenticated and user == r.author %}
-        | <a href="{% url 'pages:update_page' r.pk %}">Editar</a>
-        | <a href="{% url 'pages:delete_page' r.pk %}">Borrar</a>
-      {% endif %}
-    </li>
-  {% endfor %}
-  </ul>
-{% else %}
-  <p>No hay páginas aún.</p>
-{% endif %}
+<style>
+  body {
+    background-color: #fff8f0;
+    font-family: 'Poppins', sans-serif;
+  }
+  .recipes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+  }
+  .recipe-card {
+    background-color: #ffffff;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .recipe-card:hover {
+    transform: scale(1.03);
+  }
+  .recipe-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .recipe-card h2 {
+    color: #e85d75;
+    margin-top: 10px;
+  }
+  .recipe-card p {
+    color: #444;
+    padding: 0 20px 20px;
+    font-size: 15px;
+  }
+</style>
+
+<h1 style="text-align:center; color:#e85d75; margin-top:30px;">Recetas destacadas 🍳</h1>
+<div class="recipes-container">
+
+  <div class="recipe-card">
+    <img src="{% static 'img/salad.jpg' %}" alt="Ensalada verde">
+    <h2>Ensalada verde con vinagreta</h2>
+    <p>Una opción fresca y saludable. Mezcla lechuga, espinaca, tomate y aguacate con una vinagreta de aceite de oliva, limón y sal. Ideal como acompañante o plato ligero.</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="{% static 'img/pasta.jpg' %}" alt="Pasta italiana">
+    <h2>Pasta italiana con salsa de tomate</h2>
+    <p>Cuece la pasta al dente. Prepara una salsa casera con tomate triturado, ajo, albahaca y aceite de oliva. Mezcla y sirve con queso parmesano rallado por encima.</p>
+  </div>
+
+  <div class="recipe-card">
+    <img src="{% static 'img/pancakes.jpg' %}" alt="Panqueques con miel">
+    <h2>Panqueques con miel</h2>
+    <p>Mezcla harina, leche, huevo y azúcar. Cocina en sartén con mantequilla y sirve apilados con miel natural y trozos de fruta. ¡Perfectos para un desayuno dulce!</p>
+  </div>
+
+</div>
 {% endblock %}
+
